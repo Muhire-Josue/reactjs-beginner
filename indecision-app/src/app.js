@@ -31,18 +31,24 @@ const reset = () => {
   renderCounterApp();
 };
 
-const appRoot = document.getElementById('app');
 
 const renderCounterApp = () => {
   const templateTwo = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}>+1</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>reset</button>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+      </ol>
+      <form onSubmit>
+        <input type="text" name="option" />
+        <button type="submit">Add Option</button>
+      </form>
     </div>
   );
-
+  const appRoot = document.getElementById('app');
   ReactDOM.render(templateTwo, appRoot);
 };
 
